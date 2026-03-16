@@ -1,9 +1,13 @@
 import {test} from "@playwright/test"
 import flipkart from "../pom/flipkart.spec"
+import path from "path";
+import fs from "fs"
+
+let fkart=JSON.parse(fs.readFileSync(path.join(__dirname,"../data_driven/flip.json")));
 
 test("flipkart",async({page})=>{
     let flipkartsite=new flipkart();
-    await flipkartsite.load_flipkart(page);
+    await flipkartsite.load_flipkart(page,fkart.url);
     await page.locator('//span[.="✕"]').click();
     await flipkartsite.gudipadwa(page);
     await flipkartsite.gudicloth(page);

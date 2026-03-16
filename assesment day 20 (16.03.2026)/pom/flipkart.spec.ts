@@ -1,6 +1,6 @@
 class flipkart {
-    async load_flipkart(page) {
-        await page.goto('https://www.flipkart.com/');
+    async load_flipkart(page,url) {
+        await page.goto(url);
     }
     async gudipadwa(page) {
         await page.locator('//div[.="Home"]').first().click();
